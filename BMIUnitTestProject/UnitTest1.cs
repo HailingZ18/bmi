@@ -5,13 +5,90 @@ using BMICalculator;
 namespace BMIUnitTestProject
 {
     [TestClass]
-    public class UnitTest1
+    public class BMICalculatorTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestBMICategory_ReturnUnderweight()
         {
-            BMI bmi = new BMI() { WeightStones = 12, WeightPounds = 0, HeightFeet = 5, HeightInches = 10 };
-            Assert.AreEqual(bmi.BMICategory, BMICategory.Normal);
+            //Arrange
+            BMI bmi = new BMI
+            {
+                WeightStones = 5,
+                WeightPounds = 4,
+                HeightFeet = 5,
+                HeightInches = 4
+            };
+
+            string expectedResult = "Underweight";
+
+            //Act
+            string actualResult = bmi.BMICategory.ToString();
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestBMICategory_ReturnNormal()
+        {
+            //Arrange
+            BMI bmi = new BMI
+            {
+                WeightStones = 7,
+                WeightPounds = 0,
+                HeightFeet = 5,
+                HeightInches = 0
+            };
+
+            string expectedResult = "Normal";
+
+            //Act
+            string actualResult = bmi.BMICategory.ToString();
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestBMICategory_ReturnOverweight()
+        {
+            //Arrange
+            BMI bmi = new BMI
+            {
+                WeightStones = 10,
+                WeightPounds = 0,
+                HeightFeet = 5,
+                HeightInches = 0
+            };
+
+            string expectedResult = "Overweight";
+
+            //Act
+            string actualResult = bmi.BMICategory.ToString();
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void TestBMICategory_ReturnObese()
+        {
+            //Arrange
+            BMI bmi = new BMI
+            {
+                WeightStones = 15,
+                WeightPounds = 0,
+                HeightFeet = 5,
+                HeightInches = 0
+            };
+
+            string expectedResult = "Obese";
+
+            //Act
+            string actualResult = bmi.BMICategory.ToString();
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
         }
     }
 }
