@@ -84,6 +84,33 @@ namespace BMICalculator
                 }
             }
         }
+
+        //New Feature 
+        [Display(Name = "Your Recommendation is: ")]
+        public string Recommendation
+        {
+            get {
+                double bmi = this.BMIValue;
+
+                if (bmi <= UnderWeightUpperLimit)
+                {
+                    return "Follow a healthy diet that incorporates nutritious calorie-dense foods to gain some weight.";
+                }
+                else if (bmi <= NormalWeightUpperLimit)
+                {
+                    return "Stay the way you are. You are in the healthy weight range!";
+                }
+                else if (bmi <= OverWeightUpperLimit)
+                {
+                    return "Engage in moderate physical activity, progressing to 30 minutes or more to reduce some weight.";
+                }
+                else
+                {
+                    return "Cut back on dietary fat can reduce calories and is heart-healthy! Engage in moderate physical activity on all days of the week to reduce weight.";
+                }
+            }
+        }
+        
     }
 }
 
