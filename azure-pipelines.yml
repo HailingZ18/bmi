@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'vs2017-win2016'
 
 variables:
   buildConfiguration: 'Release'
@@ -27,13 +27,14 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-# Run unit test
+# Run unit tests
 - task: DotNetCoreCLI@2
   displayName: 'Run unit test $(buildConfiguration)'
   inputs:
     command: test
     projects: '**/*UnitTest*/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    arguments: '--no-build --configuration $(buildConfiguration) --collect "Code coverage"'
+    publishTestResults: true
 
 # Run code analysis
 - task: SonarCloudAnalyze@1

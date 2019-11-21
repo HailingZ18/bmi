@@ -3,7 +3,6 @@
 //
 
 using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace BMICalculator
 {
@@ -85,7 +84,11 @@ namespace BMICalculator
             }
         }
 
+
         //New Feature 
+
+        //Display suitable recommendations to the user of each category
+
         [Display(Name = "Your Recommendation is: ")]
         public string Recommendation
         {
@@ -106,7 +109,8 @@ namespace BMICalculator
                 }
                 else
                 {
-                    return "Cut back on dietary fat can reduce calories and is heart-healthy! Engage in moderate physical activity on all days of the week to reduce weight.";
+                    return "Cut back on dietary fat can reduce calories and is heart-healthy! " +
+                        "Engage in moderate physical activity on all days of the week to reduce weight.";
                 }
             }
         }
